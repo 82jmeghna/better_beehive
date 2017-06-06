@@ -59,6 +59,6 @@ class Search extends React.Component {
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Search />,
-    document.getElementById('autocomplete-box'),
+    document.getElementById('app'),
   )
 })
