@@ -1,64 +1,35 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
 import PropTypes from 'prop-types'
-import PlacesAutocomplete from 'react-places-autocomplete'
-import BuzzForm from './form'
+import Search from './Search'
 
-window.jQuery = jQuery
+class Main extends React.Component {
+  styles = {
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { address: '', searchClicked: false }
-  }
-
-  handleChange = (address) => {
-    this.setState({ address })
-  }
-
-  handleSelect = (address, placeId) => {
-    this.setState({ address, placeId })
-    this.setState({searchClicked: true})
-  }
-
-  handleEnter = () => {
-    this.setState({searchClicked: true})
   }
 
   render() {
-    const inputProps = {
-      value:       this.state.address,
-      onChange:    this.handleChange,
-      type:        'search',
-      placeholder: 'Begin typing business name or address..',
-      autoFocus:   true,
-    }
-
-    const cssClasses = {
-      root:  'mdl-textfield mdl-js-textfield mdl-textfield--floating-label',
-      input: 'mdl-textfield__input',
-      autocompleteContainer: 'autocomplete-container'
-    }
-
     return (
-      <div style={{ marginBottom: '100px' }}>
-      <PlacesAutocomplete
-        inputProps={inputProps}
-        classNames={cssClasses}
-        onSelect={this.handleSelect}
-        onEnterKeyDown={this.handleEnter}
-      />
-      {
-        this.state.searchClicked && <BuzzForm placeId={this.state.placeId} />
-      }
+      <div>
+        <div>
+          Bee the Change in Our Community.
+        </div>
+        <div>
+          Buzz & Sting to help create a disability-friendly world yoyo.
+        </div>
+        <Search />
       </div>
     )
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Search />,
+  render(
+    <Main />,
     document.getElementById('app'),
   )
 })
+
+if (module.hot) {
+
+}
