@@ -1,6 +1,5 @@
 import React from 'react'
 import { render } from 'react-dom'
-import PropTypes from 'prop-types'
 import Search from './Search'
 
 class Main extends React.Component {
@@ -15,7 +14,7 @@ class Main extends React.Component {
           Bee the Change in Our Community.
         </div>
         <div>
-          Buzz & Sting to help create a disability-friendly world yoyo.
+          Buzz & Sting to help create a disability-friendly world.
         </div>
         <Search />
       </div>
@@ -23,13 +22,18 @@ class Main extends React.Component {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+const renderApp = () => {
   render(
     <Main />,
     document.getElementById('app'),
   )
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderApp()
 })
 
 if (module.hot) {
-
+  module.hot.accept()
+  renderApp()
 }

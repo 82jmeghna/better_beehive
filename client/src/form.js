@@ -1,7 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import PlacesAutocomplete from 'react-places-autocomplete'
 import Loader from 'halogen/RingLoader'
 
 export default class BuzzForm extends React.Component {
@@ -47,28 +45,28 @@ export default class BuzzForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-        buzz: true,
-        reason: '',
-        email: '',
-        relationship: 'self',
-        placeId: props.placeId,
+      buzz: true,
+      reason: '',
+      email: '',
+      relationship: 'self',
+      placeId: props.placeId,
     }
   }
 
   handleImgChange = (e) => {
-    this.setState({ buzz: e.target.src.includes('buzz')})
+    this.setState({ buzz: e.target.src.includes('buzz') })
   }
 
   handleEmailChange = (e) =>  {
-    this.setState({email: e.target.value})
+    this.setState({ email: e.target.value })
   }
 
   handleRelationshipChange = (e) =>  {
-    this.setState({relationship: e.target.value})
+    this.setState({ relationship: e.target.value })
   }
 
   handleReasonChange = (e) =>  {
-    this.setState({reason: e.target.value})
+    this.setState({ reason: e.target.value })
   }
 
   handleSubmit = (e) => {
@@ -76,13 +74,12 @@ export default class BuzzForm extends React.Component {
     if (!this.state.email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
       this.setState({ emailError: true })
     } else {
-      const csrfToken = $('meta[name=csrf-token]').attr('content')
       this.setState({ emailError: null, loading: true })
       fetch('reviews',
         {
           method: 'POST',
           headers: new Headers({
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           }),
           body: JSON.stringify({
             review: {
@@ -92,14 +89,13 @@ export default class BuzzForm extends React.Component {
               reason: this.state.reason,
               relationship: this.state.relationship,
             },
-            authenticity_token: csrfToken,
-          })
+          }),
         })
-        .then((response) => {
+        .then(() => {
           location.assign('spots/' + this.state.placeId)
         })
         .catch((error) => {
-          console.error('failure', error)
+          console.error('failure', error) // eslint-disable-line no-console
         })
     }
   }
@@ -169,4 +165,8 @@ export default class BuzzForm extends React.Component {
       </form>
     )
   }
+}
+
+BuzzForm.propTypes = {
+  placeId: PropTypes.string.isRequired,
 }

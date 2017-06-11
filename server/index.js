@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require('express')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
@@ -14,11 +15,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // Static files
 if (process.env.NODE_ENV !== 'production') {
-  console.log('DEVELOPMENT ENVIRONMENT: Using WebPack Middleware...');
-  const webpackDevHelper = require('./index.dev.js');
-  webpackDevHelper.useWebpackMiddleware(app);
+  console.log('DEVELOPMENT ENVIRONMENT: Using WebPack Middleware...')
+  const webpackDevHelper = require('./index.dev.js')
+  webpackDevHelper.useWebpackMiddleware(app)
 } else {
-  console.log('PRODUCTION ENVIRONMENT');
+  console.log('PRODUCTION ENVIRONMENT')
   app.use(express.static(__dirname + '/../client/dist'))
 }
 

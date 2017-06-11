@@ -1,4 +1,4 @@
 node_modules
-babel_cache
 client/dist
-.env
+babel_cache
+.git

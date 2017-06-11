@@ -6,21 +6,21 @@ const webpackcompiler = webpack(webpackconfig)
 
 // enable webpack middleware for hot-reloads in development
 function useWebpackMiddleware(app) {
-    app.use(webpackDevMiddleware(webpackcompiler, {
-        publicPath: webpackconfig.output.publicPath,
-        stats: {
-            colors: true,
-            chunks: false,
-            'errors-only': true
-        }
-    }));
-    app.use(webpackHotMiddleware(webpackcompiler, {
-        log: console.log
-    }));
+  app.use(webpackDevMiddleware(webpackcompiler, {
+    publicPath: webpackconfig.output.publicPath,
+    stats: {
+      colors: true,
+      chunks: false,
+      'errors-only': true,
+    },
+  }))
+  app.use(webpackHotMiddleware(webpackcompiler, {
+    log: console.log, // eslint-disable-line no-console
+  }))
 
-    return app;
+  return app
 }
 
 module.exports = {
-    useWebpackMiddleware: useWebpackMiddleware
-};
+  useWebpackMiddleware: useWebpackMiddleware,
+}

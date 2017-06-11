@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import PlacesAutocomplete from 'react-places-autocomplete'
 import BuzzForm from './form'
 
@@ -15,11 +14,11 @@ export default class Search extends React.Component {
 
   handleSelect = (address, placeId) => {
     this.setState({ address, placeId })
-    this.setState({searchClicked: true})
+    this.setState({ searchClicked: true })
   }
 
   handleEnter = () => {
-    this.setState({searchClicked: true})
+    this.setState({ searchClicked: true })
   }
 
   render() {
@@ -34,7 +33,7 @@ export default class Search extends React.Component {
     const cssClasses = {
       root:  'mdl-textfield mdl-js-textfield mdl-textfield--floating-label',
       input: 'mdl-textfield__input',
-      autocompleteContainer: 'autocomplete-container'
+      autocompleteContainer: 'autocomplete-container',
     }
 
     return (
