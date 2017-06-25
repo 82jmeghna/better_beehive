@@ -10,14 +10,19 @@ module.exports = {
     filename: 'bundle.js',
   },
   module: {
-    loaders: [{
-      test: path.join(__dirname, 'client', 'src'),
-      loader: 'babel-loader',
-      query: {
-        cacheDirectory: 'babel_cache',
-        presets: ['react', 'es2015', 'stage-0'],
+    loaders: [
+      {
+        test: path.join(__dirname, 'client', 'src'),
+        loader: 'babel-loader',
+        query: {
+          cacheDirectory: 'babel_cache',
+          presets: ['react', 'es2015', 'stage-0'],
+          plugins: ['transform-decorators-legacy'],
+        },
       },
-    }],
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192&name=../[hash].[ext]' },
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({

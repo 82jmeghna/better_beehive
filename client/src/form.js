@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Radium from 'radium'
 import Loader from 'halogen/RingLoader'
 
+@Radium
 export default class BuzzForm extends React.Component {
 
   styles = {

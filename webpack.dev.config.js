@@ -14,11 +14,15 @@ module.exports = {
     filename: '[name].js',
   },
   module: {
-    loaders: [{
-      test: path.join(__dirname, 'client', 'src'),
-      loaders: ['react-hot-loader', 'babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-0,cacheDirectory=babel_cache'],
-      exclude: /node_modules/,
-    }],
+    loaders: [
+      {
+        test: path.join(__dirname, 'client', 'src'),
+        loaders: ['react-hot-loader', 'babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-0,plugins[]=transform-decorators-legacy,cacheDirectory=babel_cache'],
+        exclude: /node_modules/,
+      },
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
+    ],
   },
   resolve: {
     extensions: ['.js', 'map'],
