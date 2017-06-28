@@ -20,6 +20,9 @@ I recommend using branches on your fork to separate issues you might be working 
 When making a pull request, make sure you are up to date with the master branch by fetching the upstream and rebasing. Squash all of your work
 on an issue in to a single commit for your PR. If I make requests for you to modify your PR, make the changes and squash the commits again.
 
+## Accessibility!
+Remember this for later: https://facebook.github.io/react/docs/accessibility.html
+
 ## Contact Information
 
 For development questions or suggestions, contact me at josh@joshstevens.net  
