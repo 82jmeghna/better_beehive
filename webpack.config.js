@@ -2,6 +2,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+require('dotenv').config()
 
 module.exports = {
   entry: path.join(__dirname, 'client', 'src', 'main.js'),
@@ -21,13 +22,16 @@ module.exports = {
         },
       },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192&name=../[hash].[ext]' },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader?limit=8192&name=../[hash].[ext]',
+      },
     ],
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
+        NODE_ENV: JSON.stringify('production'),
       },
     }),
     new HtmlWebpackPlugin({
@@ -36,6 +40,7 @@ module.exports = {
       inject: false,
       appMountId: 'app',
       filename: '../index.html',
+      placesApiKey: process.env.GOOGLE_PLACES_API_KEY,
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
