@@ -10,7 +10,7 @@ export default class Search extends React.Component {
     this.state = { address: '', searchClicked: false }
   }
 
-  handleChange = (address) => {
+  handleChange = address => {
     this.setState({ address })
   }
 
@@ -24,6 +24,10 @@ export default class Search extends React.Component {
   }
 
   styles = {
+    autocompleteDiv: {
+      display: 'flex',
+      justifyContent: 'center',
+    },
     autocompleteBox: {
       root: {
         width: '500px',
@@ -33,19 +37,27 @@ export default class Search extends React.Component {
         background: 'white',
         width: '500px',
         height: '50px',
-        padding: '10px 10px',
+        padding: '0 10px',
         color: 'black',
+        border: 'none',
+        borderBottom: '1px solid rgba(0,0,0, 0.12)',
+        fontSize: '16px',
+        fontFamily: '"Helvetica", "Arial", sans-serif',
+        ':focus': {
+          outline: 'none',
+        },
       },
+      autocompleteContainer: {},
     },
   }
 
   render() {
     const inputProps = {
-      value:       this.state.address,
-      onChange:    this.handleChange,
-      type:        'search',
+      value: this.state.address,
+      onChange: this.handleChange,
+      type: 'search',
       placeholder: 'Begin typing business name or address..',
-      autoFocus:   true,
+      autoFocus: true,
     }
 
     // const cssClasses = {
@@ -56,15 +68,18 @@ export default class Search extends React.Component {
 
     return (
       <div style={{ marginBottom: '100px' }}>
-        <PlacesAutocomplete
-          inputProps={inputProps}
-          styles={this.styles.autocompleteBox}
-          onSelect={this.handleSelect}
-          onEnterKeyDown={this.handleEnter}
-        />
-        {
-          this.state.searchClicked && <BuzzForm placeId={this.state.placeId} />
-        }
+        <div style={this.styles.autocompleteDiv}>
+          <PlacesAutocomplete
+            inputProps={inputProps}
+            styles={this.styles.autocompleteBox}
+            onSelect={this.handleSelect}
+            onEnterKeyDown={this.handleEnter}
+          />
+        </div>
+        {this.state.searchClicked &&
+          <div>
+            <BuzzForm placeId={this.state.placeId} />
+          </div>}
       </div>
     )
   }

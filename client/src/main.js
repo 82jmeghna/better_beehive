@@ -15,7 +15,7 @@ class Main extends React.Component {
       backgroundSize: 'cover',
       lineHeight: '1em',
       display: 'flex',
-      flexDirection: 'row',
+      flexDirection: 'column',
       flexWrap: 'wrap',
       justifyContent: 'center',
       alignItems: 'center',

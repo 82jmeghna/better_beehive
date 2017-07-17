@@ -8,3 +8,7 @@ body {
 a img {
   border: 0px;
 }
+
+input:focus {
+  outline: none;
+}
