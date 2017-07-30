@@ -13,6 +13,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // Routes
+const mountRoutes = require('./routes')
+mountRoutes(app)
 
 // Static files
 if (process.env.NODE_ENV !== 'production') {
