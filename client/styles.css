@@ -12,3 +12,11 @@ a img {
 input:focus {
   outline: none;
 }
+
+html {
+  min-height: 100%;
+}
+
+#app {
+  height: 100vh;
+}

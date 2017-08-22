@@ -24,6 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
 } else {
   console.log('PRODUCTION ENVIRONMENT')
   app.use(express.static(__dirname + '/../client/dist'))
+  app.use('/*', express.static(__dirname + '/../client/dist'))
 }
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT}`))

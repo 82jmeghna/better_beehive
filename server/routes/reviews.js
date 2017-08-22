@@ -24,11 +24,11 @@ router.post('/', async (req, res) => {
   } = await db.query(
     'INSERT INTO reviews(place_id, buzz, email, reason, relationship, created_at, updated_at) VALUES($1, $2, $3, $4, $5, now(), now())',
     [
-      req.body.placeId,
-      req.body.buzz,
-      req.body.email,
-      req.body.reason,
-      req.body.relationship,
+      req.body.review.placeId,
+      req.body.review.buzz,
+      req.body.review.email,
+      req.body.review.reason,
+      req.body.review.relationship,
     ]
   )
   res.send(rows[0])

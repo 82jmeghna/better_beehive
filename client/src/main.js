@@ -1,54 +1,23 @@
 import React from 'react'
 import { render } from 'react-dom'
-import Radium from 'radium'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './Header'
-import Search from './Search'
+import Home from './Home'
+import Spot from './Spot'
 import 'style-loader!../styles.css'
 
-@Radium
-class Main extends React.Component {
-  styles = {
-    bbpHeroSection: {
-      position: 'relative',
-      height: '100%',
-      width: 'auto',
-      backgroundSize: 'cover',
-      lineHeight: '1em',
-      display: 'flex',
-      flexDirection: 'column',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    bbpSlogan: {
-      fontSize: '60px',
-      paddingTop: '160px',
-      lineHeight: '1em',
-    },
-    bbpSubSlogan: {
-      fontSize: '21px',
-      paddingTop: '24px',
-      lineHeight: '1em',
-    },
-  }
 
+class Main extends React.Component {
   render() {
     return (
       <div>
         <Header />
-        <div style={this.styles.bbpHeroSection}>
+        <Router>
           <div>
-            <h1 style={this.styles.bbpSlogan}>
-              Bee the Change in Our Community.
-            </h1>
+            <Route exact path="/" component={Home} />
+            <Route path="/spots/:id" component={Spot} />
           </div>
-          <div style={this.styles.bbpSubSlogan}>
-            Buzz & Sting to help create a disability-friendly world.
-          </div>
-          <div>
-            <Search />
-          </div>
-        </div>
+        </Router>
       </div>
     )
   }

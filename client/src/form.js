@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Radium from 'radium'
 import Loader from 'halogen/RingLoader'
+import { Redirect } from 'react-router-dom'
 import * as Buzz from '../images/transparent_buzz.png'
 import * as Sting from '../images/transparent_sting.png'
 
@@ -104,7 +105,7 @@ export default class BuzzForm extends React.Component {
         }),
         body: JSON.stringify({
           review: {
-            place_id: this.state.placeId,
+            placeId: this.state.placeId,
             buzz: this.state.buzz ? 'buzz' : 'sting',
             email: this.state.email,
             reason: this.state.reason,
@@ -113,7 +114,7 @@ export default class BuzzForm extends React.Component {
         }),
       })
         .then(() => {
-          location.assign('spots/' + this.state.placeId)
+          this.setState({ loading: false, redirect: true })
         })
         .catch(error => {
           console.error('failure', error) // eslint-disable-line no-console
@@ -127,6 +128,15 @@ export default class BuzzForm extends React.Component {
         <div style={{ margin: '100px auto', width: '32px' }}>
           <Loader color="#26A65B" size="32px" margin="4px" />
         </div>
+      )
+    }
+    if (this.state.redirect) {
+      return (
+        <Redirect
+          to={{
+            pathname: `/spots/${this.state.placeId}`,
+          }}
+        />
       )
     }
     return (

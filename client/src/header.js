@@ -21,6 +21,7 @@ export default class Header extends React.Component {
     },
     navGroup: {
       marginTop: '39px',
+      width: '508px',
     },
     navigationLink: {
       textTransform: 'uppercase',
@@ -41,20 +42,8 @@ export default class Header extends React.Component {
       <header style={this.styles.header}>
         <div style={this.styles.headerContainer}>
           <img style={this.styles.headerLogo} src={headerLogo.default} />
-          <nav style={this.styles.navGroup} >
-            <a style={this.styles.navigationLink} key="home" href="">Home</a>
-            <a style={this.styles.navigationLink} key="about" href="">About Us</a>
-            <a style={this.styles.navigationLink} key="contact" href="">Contact Us</a>
-            <a style={this.styles.navigationLink} key="blog" href="">Blog</a>
-          </nav>
-          <div>
-            <label>
-              <i className="material-icons">search</i>
-            </label>
-            <div>
-              <input id="search-field" />
-            </div>
-          </div>
+          <nav style={this.styles.navGroup} />
+          <div style={{ width: '131px' }} />
         </div>
       </header>
     )
