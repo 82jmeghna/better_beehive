@@ -6,7 +6,7 @@
   "author": "Josh Stevens",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --progress --colors",
+    "heroku-postbuild": "webpack --progress --colors",
     "start": "NODE_ENV=production node server",
     "dev": "NODE_ENV=dev nodemon server",
     "lint": "eslint . --ignore-path .eslintignore"
