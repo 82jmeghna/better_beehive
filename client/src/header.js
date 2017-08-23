@@ -1,5 +1,6 @@
 import React from 'react'
 import Radium from 'radium'
+import { Link } from 'react-router-dom'
 import * as headerLogo from '../images/header-logo.png'
 
 @Radium
@@ -41,7 +42,9 @@ export default class Header extends React.Component {
     return (
       <header style={this.styles.header}>
         <div style={this.styles.headerContainer}>
-          <img style={this.styles.headerLogo} src={headerLogo.default} />
+          <Link to={'/'}>
+            <img style={this.styles.headerLogo} src={headerLogo.default} />
+          </Link>
           <nav style={this.styles.navGroup} />
           <div style={{ width: '131px' }} />
         </div>

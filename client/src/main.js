@@ -6,16 +6,17 @@ import Home from './Home'
 import Spot from './Spot'
 import 'style-loader!../styles.css'
 
-
 class Main extends React.Component {
   render() {
     return (
       <div>
-        <Header />
         <Router>
           <div>
-            <Route exact path="/" component={Home} />
-            <Route path="/spots/:id" component={Spot} />
+            <Header />
+            <div>
+              <Route exact path="/" component={Home} />
+              <Route path="/spots/:id" component={Spot} />
+            </div>
           </div>
         </Router>
       </div>
