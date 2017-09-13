@@ -14,6 +14,7 @@ export default class Search extends React.Component {
     this.setState({ address })
   }
 
+
   handleSelect = (address, placeId) => {
     this.setState({ address, placeId })
     this.setState({ searchClicked: true })
@@ -31,16 +32,14 @@ export default class Search extends React.Component {
     autocompleteBox: {
       root: {
         width: '500px',
-        marginTop: '40px',
+        marginTop: '10px',
       },
       input: {
-        background: 'white',
-        width: '500px',
-        height: '50px',
-        padding: '0 10px',
+        backgroundColor: '#fafafa',
+        width: '100%',
+        padding: '15px 10px',
         color: 'black',
-        border: 'none',
-        borderBottom: '1px solid rgba(0,0,0, 0.12)',
+        border: '1px solid rgba(0,0,0, 0.12)',
         fontSize: '16px',
         fontFamily: '"Helvetica", "Arial", sans-serif',
         ':focus': {
@@ -67,8 +66,8 @@ export default class Search extends React.Component {
     // }
 
     return (
-      <div style={{ marginBottom: '100px' }}>
-        <div style={this.styles.autocompleteDiv}>
+      <div style={{  }}>
+        <div style={this.styles.autocompleteDiv} className="txt-center">
           <PlacesAutocomplete
             inputProps={inputProps}
             styles={this.styles.autocompleteBox}

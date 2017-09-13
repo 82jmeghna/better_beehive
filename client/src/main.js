@@ -1,9 +1,11 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Header from './Header'
-import Home from './Home'
-import Spot from './Spot'
+import Header from './header'
+import Home from './home'
+import Spot from './spot'
+import Footer from './footer'
+import Terms from './terms'
 import 'style-loader!../styles.css'
 
 class Main extends React.Component {
@@ -16,7 +18,9 @@ class Main extends React.Component {
             <div>
               <Route exact path="/" component={Home} />
               <Route path="/spots/:id" component={Spot} />
+              <Route path="/terms" component={Terms}/>
             </div>
+            <Footer/>
           </div>
         </Router>
       </div>

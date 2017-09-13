@@ -1,7 +1,8 @@
 import React from 'react'
 import Radium from 'radium'
 import { Link } from 'react-router-dom'
-import * as headerLogo from '../images/header-logo.png'
+import * as headerLogo from '../images/main-logo.png'
+import { Nav, Navbar, NavItem } from 'react-bootstrap'
 
 @Radium
 export default class Header extends React.Component {
@@ -16,39 +17,58 @@ export default class Header extends React.Component {
       display: 'flex',
       justifyContent: 'space-around',
     },
-    headerLogo: {
-      height: '130px',
-      marginTop: '-15px',
-    },
+
     navGroup: {
       marginTop: '39px',
       width: '508px',
     },
-    navigationLink: {
-      textTransform: 'uppercase',
-      fontWeight: '900',
-      color: 'rgba(0, 0, 0, 0.87)',
-      textDecoration: 'none',
-      fontSize: '18px',
-      padding: '25px',
-      ':hover': {
-        cursor: 'pointer',
-        borderBottom: '2px solid',
-      },
+    navigationListItem: {
+      listStyle: 'none',
+      float: 'left',
+      display: 'block',
+    },
+    navbarBrand: {
+      float: 'none',
+    },
+    navbarHeader: {
+      float:'none',
+      display: 'inline-block',
+    },
+    navbarNav: {
+      float:'none',
+      display: 'inline-block',
+    },
+    mainnav: {
+      backgroundColor:'#fff',
+      border: '0',
     },
   }
 
   render() {
     return (
-      <header style={this.styles.header}>
-        <div style={this.styles.headerContainer}>
-          <Link to={'/'}>
-            <img style={this.styles.headerLogo} src={headerLogo.default} />
-          </Link>
-          <nav style={this.styles.navGroup} />
-          <div style={{ width: '131px' }} />
-        </div>
-      </header>
+        <Navbar style={this.styles.mainnav} fixedTop collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <Link to={'/'} style={this.styles.navbarBrand}>
+                <img style={this.styles.headerLogo} src={headerLogo.default} />
+              </Link>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav className="navlink">
+              <NavItem><Link to="/">HOME</Link></NavItem>
+              <NavItem><Link to="/about">ABOUT US</Link></NavItem>
+              <NavItem><Link to="/contact">CONTACT US</Link></NavItem>
+              <NavItem><Link to="/blog">BLOG</Link></NavItem>
+            </Nav>
+          </Navbar.Collapse>
+          <Nav className="nav-icon">
+            <NavItem href="#"><i className="fa fa-search"></i></NavItem>
+            <NavItem href="#"><i className="fa fa-twitter"></i></NavItem>
+            <NavItem href="#"><i className="fa fa-facebook"></i></NavItem>
+          </Nav>
+        </Navbar>
     )
   }
 }
