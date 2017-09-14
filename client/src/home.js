@@ -69,7 +69,7 @@ export default class Home extends React.Component {
                   <h3 className="img-text">Sting</h3>
                 </div>
               </div>
-              <h3>To Help Create a disabilty-friendly World</h3>
+              <h3>To Help Create a disability-friendly World</h3>
             </div>
           </div>
         </div>

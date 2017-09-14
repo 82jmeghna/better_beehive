@@ -120,7 +120,7 @@ export default class BuzzForm extends React.Component {
     }
     return (
       <form className="search-form">
-        <h3>How would you define your expierence?</h3>
+        <h3>How would you define your experience?</h3>
         <div style={this.styles.inputGroup}>
 
         </div>
@@ -178,7 +178,7 @@ export default class BuzzForm extends React.Component {
                 <label><input type="radio" name="optradio" /></label>
               </div>
               <div className="radio">
-                <h3>Parent/<br/>Guardiant</h3>
+                <h3>Parent/<br/>Guardian</h3>
                 <label><input type="radio" name="optradio" /></label>
               </div>
               <div className="radio disabled">
