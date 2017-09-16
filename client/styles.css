@@ -27,9 +27,11 @@ html {
     height: 200px;
     width: 150px;
 }
-
+nav{
+    font-family: 'Montserrat', sans-serif;
+}
 .img-container h3.img-text {
-    bottom: 13px;
+    bottom: 7px;
     margin-top: 0;
 }
 .or-text{
@@ -38,7 +40,7 @@ html {
 }
 h3 {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 11px;
     color: #040707;
     text-transform: uppercase;
 }
@@ -71,7 +73,10 @@ h3 {
     height: 250px;
     width: 210px;
 }
-
+.img-container ~ h3{
+    color: #F4BA2C;
+    font-size: 20px;
+}
 .theme-btn {
     background-color: #ffcb31;
     text-transform: uppercase;
@@ -102,6 +107,10 @@ h3 {
 
 .m-t-20 {
     margin-top: 20px;
+}
+
+nav.navbar.navbar-default.navbar-fixed-top .container {
+    width: calc(100% - 30px);
 }
 
 .radio {
@@ -182,7 +191,8 @@ ul.nav-icon {
     }
     .img-container img {
         height: 170px;
-        width: 125px;
+        width: auto;
+        margin: 0 25px;
     }
 
 }
@@ -340,7 +350,7 @@ a:focus, a:hover,a {
     text-decoration: none;
 }
 .navbar-brand img{
-    max-width: 250px;
+    max-width: 260px;
     height: auto;
     margin-top: 40px;
 }

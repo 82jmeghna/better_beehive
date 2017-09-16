@@ -1,8 +1,8 @@
 import React from 'react'
 import Radium from 'radium'
 import Search from './search'
-import * as Buzz from '../images/simple_buzz.png'
-import * as Sting from '../images/simple_sting.png'
+import * as Buzz from '../images/buzz.png'
+import * as Sting from '../images/sting.png'
 
 @Radium
 export default class Home extends React.Component {
@@ -26,6 +26,8 @@ export default class Home extends React.Component {
       lineHeight: '1em',
       fontWeight: '600',
       marginTop: '120px',
+      color: '#A094F9',
+      fontFamily: 'Montserrat',
     },
     bbpSubSlogan: {
       fontSize: '21px',
@@ -47,7 +49,7 @@ export default class Home extends React.Component {
         <div>
           <div className="col-sm-6 col-sm-offset-3 text-center">
           <h1 style={this.styles.bbpSlogan}>
-            Bee the Change in Our Community.
+            Bee the Change
           </h1>
             <div style={this.styles.inputGroup}>
               <div className="img-container" style={this.styles.headerImg}>
@@ -57,7 +59,6 @@ export default class Home extends React.Component {
                   onClick={this.handleImgChange}
                   src={Buzz.default}
                 />
-                  <h3 className="img-text">buzz</h3>
                 </div>
                 <h3 className="img-text or-text">or</h3>
                 <div>
@@ -66,10 +67,9 @@ export default class Home extends React.Component {
                   onClick={this.handleImgChange}
                   src={Sting.default}
                 />
-                  <h3 className="img-text">Sting</h3>
                 </div>
               </div>
-              <h3>To Help Create a disability-friendly World</h3>
+              <h3>Share your journey to create a disability-friendly world</h3>
             </div>
           </div>
         </div>
