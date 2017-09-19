@@ -3,61 +3,40 @@ import PropTypes from 'prop-types'
 import Radium from 'radium'
 import Loader from 'halogen/RingLoader'
 import { Redirect } from 'react-router-dom'
-import * as Buzz from '../images/transparent_buzz.png'
-import * as Sting from '../images/transparent_sting.png'
+import * as Buzz from '../images/buzz.png'
+import * as Sting from '../images/sting.png'
+import { Button } from 'react-bootstrap'
 
 @Radium
 export default class BuzzForm extends React.Component {
   styles = {
     buzzForm: {
-      display: 'flex',
-      alignItems: 'center',
       flexDirection: 'column',
       fontSize: '14px',
     },
     inputGroup: {
-      display: 'flex',
-      flexDirection: 'row',
     },
     label: {
-      display: 'flex',
-      alignItems: 'center',
+      marginBottom: '30px',
     },
     inputElement: {
       width: '500px',
       height: '50px',
       fontSize: '16px',
-      marginLeft: '25px',
       marginBottom: '10px',
+      display: 'inline-block',
+      padding: '15px 10px',
+      backgroundColor: 'rgb(250, 250, 250)',
+      border: '1px solid rgba(0, 0, 0, 0.12)',
+      borderRadius: '4px',
     },
     textArea: {
-      height: '250px',
-      marginTop: '25px',
+      height: '150px',
+      marginTop: '0px',
       resize: 'none',
     },
     select: {
       marginTop: '25px',
-    },
-    submit: {
-      backgroundColor: '#2C9647',
-      color: '#FFFFFF',
-      boxShadow:
-        '0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)',
-      border: 'none',
-      borderRadius: '2px',
-      height: '36px',
-      margin: '10px 0 0 0',
-      fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
-      fontSize: '14px',
-      fontWeight: '500',
-      textTransform: 'uppercase',
-      letterSpacing: '0',
-      overflow: 'hidden',
-      cursor: 'pointer',
-      textAlign: 'center',
-      lineHeight: '36px',
-      verticalAlign: 'middle',
-      padding: '0 16px',
     },
   }
 
@@ -140,21 +119,27 @@ export default class BuzzForm extends React.Component {
       )
     }
     return (
-      <form>
+      <form className="search-form">
+        <h3>How would you define your experience?</h3>
         <div style={this.styles.inputGroup}>
+
+        </div>
+        <div className="img-card">
           <img
             title="Buzz!"
             onClick={this.handleImgChange}
             src={Buzz.default}
             style={{ opacity: this.state.buzz ? 1.0 : 0.1 }}
           />
-          <img
+        </div>
+      <div className="img-card">
+        <img
             title="Sting!"
             onClick={this.handleImgChange}
             src={Sting.default}
             style={{ opacity: this.state.buzz ? 0.1 : 1.0 }}
-          />
-        </div>
+        />
+      </div>
         <div style={this.styles.buzzForm}>
           {this.state.emailError &&
             <div style={{ color: 'red', marginBottom: '10px' }}>
@@ -162,9 +147,54 @@ export default class BuzzForm extends React.Component {
               {this.state.buzz ? 'buzz' : 'sting'}.
             </div>}
           <div style={this.styles.inputGroup}>
-            <div style={this.styles.label}>
-              <label>Email:</label>
+            <h3 style={this.styles.label}>
+              <label>
+                Why are you leaving a {this.state.buzz ? 'buzz' : 'sting'}?:
+              </label>
+            </h3>
+            <textarea
+                style={Object.assign(
+                    {},
+                    this.styles.inputElement,
+                    this.styles.textArea
+                )}
+                value={this.state.reason}
+                onChange={this.handleReasonChange}
+            />
+            <div className="m-t-20  btn-grp">
+              <Button className="inverse-btn">Previous</Button>
+              <Button className="theme-btn">Next</Button>
             </div>
+          </div>
+          <div style={this.styles.inputGroup}>
+            <h3 style={this.styles.label}>
+              <label>Relationship to individual with special needs?</label>
+            </h3>
+
+            <div className="radio-grp">
+              <div className="radio">
+                <h3>Self</h3>
+
+                <label><input type="radio" name="optradio" /></label>
+              </div>
+              <div className="radio">
+                <h3>Parent/<br/>Guardian</h3>
+                <label><input type="radio" name="optradio" /></label>
+              </div>
+              <div className="radio disabled">
+                <h3>Other</h3>
+                <label><input type="radio" name="optradio" /></label>
+              </div></div>
+
+          </div>
+          <div className="m-t-20 btn-grp">
+            <Button className="inverse-btn">Previous</Button>
+            <Button className="theme-btn">Next</Button>
+          </div>
+          <div style={this.styles.inputGroup}>
+            <h3 style={this.styles.label}>
+              <label>One last thing before you submit</label>
+            </h3>
             <input
               type="email"
               name="email"
@@ -172,49 +202,15 @@ export default class BuzzForm extends React.Component {
               onChange={this.handleEmailChange}
               style={this.styles.inputElement}
             />
+
           </div>
           <em>
             Don't worry, we won't display your email to other users or share it
             with anyone!
           </em>
-          <div style={this.styles.inputGroup}>
-            <div style={this.styles.label}>
-              <label>Relationship:</label>
-            </div>
-            <select
-              value={this.state.relationship}
-              onChange={this.handleRelationshipChange}
-              style={Object.assign(
-                {},
-                this.styles.inputElement,
-                this.styles.select
-              )}
-            >
-              <option value="self">Self</option>
-              <option value="parent">Parent</option>
-              <option value="guardian">Legal Guardian</option>
-              <option value="other">Other</option>
-            </select>
+          <div className="m-t-40  btn-grp">
+            <Button onClick={this.handleSubmit} className="theme-btn">Submit</Button>
           </div>
-          <div style={this.styles.inputGroup}>
-            <div style={this.styles.label}>
-              <label>
-                Why are you leaving a {this.state.buzz ? 'buzz' : 'sting'}?:
-              </label>
-            </div>
-            <textarea
-              style={Object.assign(
-                {},
-                this.styles.inputElement,
-                this.styles.textArea
-              )}
-              value={this.state.reason}
-              onChange={this.handleReasonChange}
-            />
-          </div>
-          <button onClick={this.handleSubmit} style={this.styles.submit}>
-            Submit
-          </button>
         </div>
       </form>
     )
