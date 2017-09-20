@@ -23,7 +23,6 @@ export default class BuzzForm extends React.Component {
       width: '500px',
       height: '50px',
       fontSize: '16px',
-      marginBottom: '10px',
       display: 'inline-block',
       padding: '15px 10px',
       backgroundColor: 'rgb(250, 250, 250)',
@@ -121,9 +120,6 @@ export default class BuzzForm extends React.Component {
     return (
       <form className="search-form">
         <h3>How would you define your experience?</h3>
-        <div style={this.styles.inputGroup}>
-
-        </div>
         <div className="img-card">
           <img
             title="Buzz!"
@@ -152,7 +148,7 @@ export default class BuzzForm extends React.Component {
                 Why are you leaving a {this.state.buzz ? 'buzz' : 'sting'}?:
               </label>
             </h3>
-            <textarea
+            <textarea className="m-b-100"
                 style={Object.assign(
                     {},
                     this.styles.inputElement,
@@ -161,17 +157,14 @@ export default class BuzzForm extends React.Component {
                 value={this.state.reason}
                 onChange={this.handleReasonChange}
             />
-            <div className="m-t-20  btn-grp">
-              <Button className="inverse-btn">Previous</Button>
-              <Button className="theme-btn">Next</Button>
-            </div>
+
           </div>
           <div style={this.styles.inputGroup}>
             <h3 style={this.styles.label}>
               <label>Relationship to individual with special needs?</label>
             </h3>
 
-            <div className="radio-grp">
+            <div className="radio-grp m-b-100">
               <div className="radio">
                 <h3>Self</h3>
 
@@ -187,10 +180,7 @@ export default class BuzzForm extends React.Component {
               </div></div>
 
           </div>
-          <div className="m-t-20 btn-grp">
-            <Button className="inverse-btn">Previous</Button>
-            <Button className="theme-btn">Next</Button>
-          </div>
+
           <div style={this.styles.inputGroup}>
             <h3 style={this.styles.label}>
               <label>One last thing before you submit</label>
@@ -205,8 +195,7 @@ export default class BuzzForm extends React.Component {
 
           </div>
           <em>
-            Don't worry, we won't display your email to other users or share it
-            with anyone!
+            Don't Worry we will not display or share your email with anyone!
           </em>
           <div className="m-t-40  btn-grp">
             <Button onClick={this.handleSubmit} className="theme-btn">Submit</Button>

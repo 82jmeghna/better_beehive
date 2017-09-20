@@ -5,7 +5,7 @@ export default class Terms extends React.Component {
     return (
        <div className="terms-main">
            <div className="page-title">
-               <h2>Terms and condition</h2>
+               <h2>Terms and conditions</h2>
            </div>
            <div className="page-content">
                <p>Better Beehive’s review application is a friendly and assertive way to engage with local businesses and organizations and advocate for accessibility and inclusion in our community.</p>
