@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import Radium from 'radium'
 import Loader from 'halogen/RingLoader'
 import { Redirect } from 'react-router-dom'
-import * as Buzz from '../images/buzz.png'
-import * as Sting from '../images/sting.png'
+import * as Buzz from '../images/fbuzz.png'
+import * as Sting from '../images/fsting.png'
 import { Button } from 'react-bootstrap'
 
 @Radium
