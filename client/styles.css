@@ -102,6 +102,14 @@ h3 {
     margin: 0 10px;
 }
 
+ul.nav-icon.nav.navbar-nav a {
+    margin-left: 20px;
+}
+
+ul.nav-icon.nav.navbar-nav li a {
+    margin-left: 0;
+}
+
 .inverse-btn {
     background-color: transparent !important;
     text-transform: uppercase;
@@ -167,7 +175,7 @@ nav.navbar.navbar-default.navbar-fixed-top {
     padding-bottom: 130px;
 }
 
-.navlink.nav>li>a {
+.navlink.nav>li>a,.navlink.nav>a {
     padding: 0;
     color: #000;
     font-weight: 600;
@@ -176,13 +184,15 @@ nav.navbar.navbar-default.navbar-fixed-top {
     transition: all 0.3s ease;
 }
 
-.navlink.nav>li>a:hover {
+.navlink.nav>li>a:hover,.navlink.nav>a:hover {
     border-bottom-color: #000 ;
     color: #000;
     transition: all 0.3s ease;
 }
-
-.navbar-nav.navlink  >li {
+.navbar-nav>li{
+    margin-top: -2px;
+}
+.navbar-nav.navlink  >li ,.navbar-nav.navlink  > a{
     margin-right: 35px;
 }
 

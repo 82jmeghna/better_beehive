@@ -1,4 +1,4 @@
-import React from 'react'
+import  React from 'react'
 import Radium from 'radium'
 import { Link } from 'react-router-dom'
 import * as headerLogo from '../images/main-logo.png'
@@ -58,15 +58,16 @@ export default class Header extends React.Component {
           <Navbar.Collapse>
             <Nav className="navlink">
               <NavItem><Link to="/">HOME</Link></NavItem>
-              <NavItem><Link to="/about">ABOUT US</Link></NavItem>
-              <NavItem><Link to="/contact">CONTACT US</Link></NavItem>
-              <NavItem><Link to="/blog">BLOG</Link></NavItem>
+              <a href="http://betterthehive.com/" target="_blank">ABOUT US</a>
+              <a href="http://betterthehive.com/contact-us/" target="_blank">CONTACT US</a>
+              <a href="http://betterthehive.com/about-us/blog/" target="_blank">BLOG</a>
             </Nav>
           </Navbar.Collapse>
           <Nav className="nav-icon">
-            <NavItem href="#"><i className="fa fa-search"></i></NavItem>
-            <NavItem href="#"><i className="fa fa-twitter"></i></NavItem>
-            <NavItem href="#"><i className="fa fa-facebook"></i></NavItem>
+            <a href="http://betterthehive.com/" target="_blank"><i className="fa fa-search"></i></a>
+            <a href="https://twitter.com/BetterBeehive" target="_blank"><i className="fa fa-twitter"></i></a>
+            <a href="https://www.facebook.com/betterbeehiveproject/?ref=bookmarks" target="_blank"><i className="fa fa-facebook"></i></a>
+            <NavItem className="pull-right"><Link to="/">Log Out</Link></NavItem>
           </Nav>
         </Navbar>
     )
