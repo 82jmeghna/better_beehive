@@ -35,8 +35,9 @@ nav {
 }
 
 .img-container h3.img-text {
-    bottom: 7px;
+    bottom: 24px;
     margin-top: 0;
+    font-size: 25px;
 }
 
 .or-text {
@@ -222,7 +223,7 @@ ul.nav-icon {
         font-size: 38px !important;
     }
     .img-container img {
-        height: 170px;
+        height: 220px;
         width: auto;
         margin: 0 40px;
     }
@@ -267,6 +268,7 @@ ul.nav-icon {
     }
     .or-text {
         bottom: 0;
+
     }
     .search-form textarea,.body-main input[type="search"],.search-form input[type="email"] {
         width: 300px !important;

@@ -1,8 +1,8 @@
 import React from 'react'
 import Radium from 'radium'
 import Search from './search'
-import * as Buzz from '../images/f-buzz.png'
-import * as Sting from '../images/f-sting.png'
+import * as Buzz from '../images/fbuzz.png'
+import * as Sting from '../images/fsting.png'
 
 @Radium
 export default class Home extends React.Component {
@@ -59,7 +59,7 @@ export default class Home extends React.Component {
                   onClick={this.handleImgChange}
                   src={Buzz.default}
                 />
-                  <h3 className="img-text">Buzz</h3>
+
                 </div>
                 <h3 className="img-text or-text">or</h3>
                 <div>
@@ -68,7 +68,7 @@ export default class Home extends React.Component {
                   onClick={this.handleImgChange}
                   src={Sting.default}
                 />
-                  <h3 className="img-text">Sting</h3>
+
                 </div>
               </div>
               <h3>Share your journey to create a disability-friendly world</h3>
