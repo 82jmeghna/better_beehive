@@ -46,7 +46,9 @@ export default class Search extends React.Component {
           outline: 'none',
         },
       },
-      autocompleteContainer: {},
+      autocompleteContainer: {
+        zIndex: '99999999999',
+      },
     },
   }
 
@@ -66,7 +68,7 @@ export default class Search extends React.Component {
     // }
 
     return (
-      <div style={{  }}>
+      <div style={{ paddingBottom:'50px' }}>
         <div style={this.styles.autocompleteDiv} className="txt-center">
           <PlacesAutocomplete
             inputProps={inputProps}
@@ -77,7 +79,7 @@ export default class Search extends React.Component {
         </div>
         {this.state.searchClicked &&
           <div>
-            <BuzzForm placeId={this.state.placeId} />
+            <BuzzForm placeId={this.state.placeId} address={this.state.address}/>
           </div>}
       </div>
     )

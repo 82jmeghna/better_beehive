@@ -1,5 +1,7 @@
 import React from 'react'
 import Radium from 'radium'
+import Header from './header'
+import Footer from './footer'
 
 @Radium
 export default class Spot extends React.Component {
@@ -8,6 +10,7 @@ export default class Spot extends React.Component {
       height: '100%',
       width: 'auto',
       backgroundSize: 'cover',
+      marginTop:'180px',
       lineHeight: '1em',
       display: 'flex',
       flexDirection: 'column',
@@ -29,9 +32,16 @@ export default class Spot extends React.Component {
 
   render() {
     return (
-      <div style={this.styles.bbpHeroSection}>
-        <div style={this.styles.bbpSubSlogan}>Thanks for submitting!</div>
+      <div>
+        <Header />
+        <div style={this.styles.bbpHeroSection}>
+          <div style={this.styles.bbpSubSlogan}>Thanks for submitting!</div>
+        </div>
+        <Footer />
       </div>
+
     )
   }
 }
+
+

@@ -20,7 +20,7 @@ mountRoutes(app)
 if (process.env.NODE_ENV !== 'production') {
   console.log('DEVELOPMENT ENVIRONMENT: Using WebPack Middleware...')
   const webpackDevHelper = require('./index.dev.js')
-  webpackDevHelper.useWebpackMiddleware(app)
+  webpackDevHelper.useWebpackMiddleware(app, express)
 } else {
   console.log('PRODUCTION ENVIRONMENT')
   app.use(express.static(__dirname + '/../client/dist'))

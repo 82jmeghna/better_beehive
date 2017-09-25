@@ -4,6 +4,9 @@ import Search from './search'
 import * as Buzz from '../images/fbuzz.png'
 import * as Sting from '../images/fsting.png'
 
+import Header from './header'
+import Footer from './footer'
+
 @Radium
 export default class Home extends React.Component {
   styles = {
@@ -18,6 +21,7 @@ export default class Home extends React.Component {
       flexWrap: 'wrap',
       justifyContent: 'center',
       alignItems: 'center',
+      paddingBottom:'50px',
 
     },
     bbpSlogan: {
@@ -46,6 +50,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="body-main" style={this.styles.bbpHeroSection}>
+        <Header />
         <div>
           <div className="col-sm-6 col-sm-offset-3 text-center">
           <h1 style={this.styles.bbpSlogan}>
@@ -79,6 +84,7 @@ export default class Home extends React.Component {
         <div>
           <Search />
         </div>
+        <Footer />
       </div>
     )
   }

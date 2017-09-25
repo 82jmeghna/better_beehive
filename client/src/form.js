@@ -7,6 +7,8 @@ import * as Buzz from '../images/fbuzz.png'
 import * as Sting from '../images/fsting.png'
 import { Button } from 'react-bootstrap'
 
+import { makeAPICall } from './helpers/requestAPI'
+
 @Radium
 export default class BuzzForm extends React.Component {
   styles = {
@@ -43,9 +45,10 @@ export default class BuzzForm extends React.Component {
     super(props)
     this.state = {
       buzz: true,
+      address: props.address,
       reason: '',
       email: '',
-      relationship: 'self',
+      relationship: '',
       placeId: props.placeId,
     }
   }
@@ -76,27 +79,22 @@ export default class BuzzForm extends React.Component {
       this.setState({ emailError: true })
     } else {
       this.setState({ emailError: null, loading: true })
-      fetch('reviews', {
+
+      makeAPICall({
+        url: 'reviews',
         method: 'POST',
-        headers: new Headers({
-          'Content-Type': 'application/json',
-        }),
-        body: JSON.stringify({
+        data: {
           review: {
             placeId: this.state.placeId,
+            address: this.state.address,
             buzz: this.state.buzz ? 'buzz' : 'sting',
             email: this.state.email,
             reason: this.state.reason,
             relationship: this.state.relationship,
           },
-        }),
+        },
       })
-        .then(() => {
-          this.setState({ loading: false, redirect: true })
-        })
-        .catch(error => {
-          console.error('failure', error) // eslint-disable-line no-console
-        })
+      this.setState({ loading: false, redirect: true })
     }
   }
 
@@ -118,37 +116,42 @@ export default class BuzzForm extends React.Component {
       )
     }
     return (
-      <form className="search-form">
-        <h3>How would you define your experience?</h3>
+      <div>
+        <form className="search-form">
+          <h3>How would you define your experience?</h3>
+          <div style={this.styles.inputGroup}>
+
+          </div>
+          <div className="img-card">
+            <img
+              title="Buzz!"
+              onClick={this.handleImgChange}
+              src={Buzz.default}
+              style={{ opacity: this.state.buzz ? 1.0 : 0.1 }}
+            />
+          </div>
         <div className="img-card">
           <img
-            title="Buzz!"
-            onClick={this.handleImgChange}
-            src={Buzz.default}
-            style={{ opacity: this.state.buzz ? 1.0 : 0.1 }}
+              title="Sting!"
+              onClick={this.handleImgChange}
+              src={Sting.default}
+              style={{ opacity: this.state.buzz ? 0.1 : 1.0 }}
           />
         </div>
-      <div className="img-card">
-        <img
-            title="Sting!"
-            onClick={this.handleImgChange}
-            src={Sting.default}
-            style={{ opacity: this.state.buzz ? 0.1 : 1.0 }}
-        />
-      </div>
         <div style={this.styles.buzzForm}>
-          {this.state.emailError &&
-            <div style={{ color: 'red', marginBottom: '10px' }}>
-              A valid email is required to submit a{' '}
-              {this.state.buzz ? 'buzz' : 'sting'}.
-            </div>}
-          <div style={this.styles.inputGroup}>
-            <h3 style={this.styles.label}>
-              <label>
-                Why are you leaving a {this.state.buzz ? 'buzz' : 'sting'}?:
-              </label>
-            </h3>
-            <textarea className="m-b-100"
+           {this.state.emailError &&
+              <div style={{ color: 'red', marginBottom: '10px' }}>
+                A valid email is required to submit a{' '}
+                {this.state.buzz ? 'buzz' : 'sting'}.
+              </div>
+           }
+           <div style={this.styles.inputGroup} className="m-b-100">
+             <h3 style={this.styles.label}>
+                <label>
+                  Why are you leaving a {this.state.buzz ? 'buzz' : 'sting'}?:
+                </label>
+             </h3>
+             <textarea
                 style={Object.assign(
                     {},
                     this.styles.inputElement,
@@ -156,52 +159,68 @@ export default class BuzzForm extends React.Component {
                 )}
                 value={this.state.reason}
                 onChange={this.handleReasonChange}
-            />
+             />
+           </div>
+           <div style={this.styles.inputGroup} className="m-b-100">
+              <h3 style={this.styles.label}>
+                <label>Relationship to individual with special needs?</label>
+              </h3>
 
-          </div>
-          <div style={this.styles.inputGroup}>
-            <h3 style={this.styles.label}>
-              <label>Relationship to individual with special needs?</label>
-            </h3>
-
-            <div className="radio-grp m-b-100">
-              <div className="radio">
-                <h3>Self</h3>
-
-                <label><input type="radio" name="optradio" /></label>
+              <div className="radio-grp">
+                <div className="radio">
+                  <h3>Self</h3>
+                  <label>
+                    <input type="radio"
+                           name="relationship"
+                           value="self"
+                           onChange={this.handleRelationshipChange}
+                    />
+                  </label>
+                </div>
+                <div className="radio">
+                  <h3>Parent/<br/>Guardian</h3>
+                  <label>
+                    <input type="radio"
+                           name="relationship"
+                           value="parent/gardian"
+                           onChange={this.handleRelationshipChange}
+                    />
+                  </label>
+                </div>
+                <div className="radio disabled">
+                  <h3>Other</h3>
+                  <label>
+                    <input type="radio"
+                           name="relationship"
+                           value="other"
+                           onChange={this.handleRelationshipChange}
+                    />
+                  </label>
+                </div>
               </div>
-              <div className="radio">
-                <h3>Parent/<br/>Guardian</h3>
-                <label><input type="radio" name="optradio" /></label>
-              </div>
-              <div className="radio disabled">
-                <h3>Other</h3>
-                <label><input type="radio" name="optradio" /></label>
-              </div></div>
-
+           </div>
+           <div style={this.styles.inputGroup}>
+              <h3 style={this.styles.label}>
+                <label>One last thing before you submit</label>
+              </h3>
+              <input
+                type="email"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleEmailChange}
+                style={this.styles.inputElement}
+              />
+           </div>
+           <em>
+              Don't worry, we will not display your email to other users or share it
+              with anyone!
+           </em>
+           <div className="m-t-40  btn-grp">
+              <Button onClick={this.handleSubmit} className="theme-btn">Submit</Button>
+           </div>
           </div>
-
-          <div style={this.styles.inputGroup}>
-            <h3 style={this.styles.label}>
-              <label>One last thing before you submit</label>
-            </h3>
-            <input
-              type="email"
-              name="email"
-              value={this.state.email}
-              onChange={this.handleEmailChange}
-              style={this.styles.inputElement}
-            />
-
-          </div>
-          <em>
-            Don't Worry we will not display or share your email with anyone!
-          </em>
-          <div className="m-t-40  btn-grp">
-            <Button onClick={this.handleSubmit} className="theme-btn">Submit</Button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     )
   }
 }
